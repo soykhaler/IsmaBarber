@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluquería Barbería Ismael · Reserva tu cita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --gray:  #767676;
+      --line:  #e8e8e8;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 32px; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    .hero {
+      max-width: 680px;
+      margin: 80px auto 64px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 6px;
+    }
+
+    .btn:hover { background: #333; }
+
+    .section {
+      max-width: 760px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .services { border-top: 1px solid var(--line); }
+
+    .service-group-title {
+      padding: 24px 0 8px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .service-group-title:first-child { padding-top: 18px; }
+
+    .service-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 16px;
+    }
+
+    .service-name { font-size: 0.95rem; }
+    .service-meta { display: flex; gap: 24px; flex-shrink: 0; }
+    .service-duration { font-size: 0.85rem; color: var(--gray); }
+    .service-price { font-size: 0.95rem; font-weight: 500; min-width: 44px; text-align: right; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .info-cell { background: var(--white); padding: 20px 24px; }
+
+    .info-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .info-value { font-size: 0.92rem; line-height: 1.6; }
+    .info-value a { color: inherit; text-decoration: none; }
+
+    .booking-section {
+      max-width: 760px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .koalendar-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .koalendar-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-name { font-family: 'DM Serif Display', serif; font-size: 1rem; }
+    .footer-info { font-size: 0.8rem; color: var(--gray); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      .hero { margin: 48px auto 48px; }
+      .info-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; }
+      .koalendar-wrap iframe { height: 600px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#">Peluquería Barbería Ismael</a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#reservar">Reservar</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Pide tu cita online</h1>
+    <p>Sin esperas. Elige el día y la hora que mejor te venga — la cita queda confirmada al instante.</p>
+    <a href="#reservar" class="btn">Reservar ahora</a>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-title">Servicios</div>
+    <div class="services">
+      <div class="service-group-title">Tipos de corte</div>
+      <div class="service-row">
+        <span class="service-name">Corte caballero</span>
+        <div class="service-meta">
+          <span class="service-price">11 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Corte barba</span>
+        <div class="service-meta">
+          <span class="service-price">7 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Corte cejas</span>
+        <div class="service-meta">
+          <span class="service-price">5 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Corte + barba</span>
+        <div class="service-meta">
+          <span class="service-price">16 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Corte + cejas</span>
+        <div class="service-meta">
+          <span class="service-price">13 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Corte + barba + cejas</span>
+        <div class="service-meta">
+          <span class="service-price">18 €</span>
+        </div>
+      </div>
+
+      <div class="service-group-title">Tipos de tintes</div>
+      <div class="service-row">
+        <span class="service-name">Decolorar</span>
+        <div class="service-meta">
+          <span class="service-price">10 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Mechas</span>
+        <div class="service-meta">
+          <span class="service-price">25 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Mechas color</span>
+        <div class="service-meta">
+          <span class="service-price">28 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Tinte cabello</span>
+        <div class="service-meta">
+          <span class="service-price">20 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Tinte barba</span>
+        <div class="service-meta">
+          <span class="service-price">15 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Tinte cabello + barba</span>
+        <div class="service-meta">
+          <span class="service-price">32 €</span>
+        </div>
+      </div>
+      <div class="service-row">
+        <span class="service-name">Color fantasía</span>
+        <div class="service-meta">
+          <span class="service-price">35 €</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Información</div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-label">Horario</div>
+        <div class="info-value">Lun – Vie: 10:00 – 20:00<br>Sábado: 10:00 – 15:00</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Dirección</div>
+        <div class="info-value">C. la Paz, 6<br>21003 Huelva</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Teléfono</div>
+        <div class="info-value"><a href="tel:601240364">601 240 364</a></div>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Pago</div>
+        <div class="info-value">Efectivo · Tarjeta</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="reservar">
+    <div class="section-title" style="margin-bottom:16px">Reservar cita</div>
+    <div class="koalendar-wrap">
+      <iframe
+        src="https://koalendar.com/e/ismael-barber?embed=true"
+        width="100%"
+        height="700"
+        frameborder="0"
+      ></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Peluquería Barbería Ismael</span>
+    <span class="footer-info">C. la Paz, 6, 21003 Huelva &nbsp;·&nbsp; 601 240 364</span>
+  </footer>
+
+</body>
+</html>
