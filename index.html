@@ -86,6 +86,14 @@
 
     .btn:hover { background: #333; }
 
+    .btn-secondary {
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover { background: #f7f7f7; }
+
     .section {
       max-width: 760px;
       margin: 0 auto 64px;
@@ -158,17 +166,40 @@
       padding: 0 24px;
     }
 
-    .koalendar-wrap {
+    .booking-card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      overflow: hidden;
+      padding: 28px 32px;
     }
 
-    .koalendar-wrap iframe {
-      display: block;
-      width: 100%;
-      height: 700px;
-      border: none;
+    .booking-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .booking-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .booking-note {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      color: var(--gray);
     }
 
     footer {
@@ -189,8 +220,10 @@
       .nav-links { gap: 20px; }
       .hero { margin: 48px auto 48px; }
       .info-grid { grid-template-columns: 1fr; }
+      .booking-card { padding: 24px; }
+      .booking-actions { flex-direction: column; }
+      .booking-actions .btn { text-align: center; }
       footer { padding: 24px 20px; flex-direction: column; }
-      .koalendar-wrap iframe { height: 600px; }
     }
   </style>
 </head>
@@ -321,13 +354,15 @@
 
   <section class="booking-section" id="reservar">
     <div class="section-title" style="margin-bottom:16px">Reservar cita</div>
-    <div class="koalendar-wrap">
-      <iframe
-        src="https://koalendar.com/e/ismael-barber?embed=true"
-        width="100%"
-        height="700"
-        frameborder="0"
-      ></iframe>
+    <div class="booking-card">
+      <h2>Reserva online con Google Calendar</h2>
+      <p>Elige el día y la hora que mejor te venga. La agenda solo muestra horas disponibles y, cuando reserves, ese hueco queda bloqueado automáticamente.</p>
+      <div class="booking-actions">
+        <a class="btn" href="#" data-google-calendar-booking target="_blank" rel="noopener">Reservar cita online</a>
+        <a class="btn btn-secondary" href="https://wa.me/34601240364" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        <a class="btn btn-secondary" href="tel:601240364">Llamar</a>
+      </div>
+      <div class="booking-note">Si la reserva online no carga, escribe por WhatsApp o llama al +34 601 24 03 64.</div>
     </div>
   </section>
 
@@ -335,6 +370,13 @@
     <span class="footer-name">Peluquería Barbería Ismael</span>
     <span class="footer-info">C. la Paz, 6, 21003 Huelva &nbsp;·&nbsp; 601 240 364</span>
   </footer>
+
+  <script>
+    // Cambia este enlace cuando tengas la agenda definitiva de Google Calendar.
+    const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2Hzuu-O26sWrwGmQkZr9fy2rp_RWjRzHn-KUZpFvitPcmzVpoY6_t4jgoRXO--kUziayCU-xrP';
+
+    document.querySelector('[data-google-calendar-booking]').href = GOOGLE_CALENDAR_BOOKING_URL;
+  </script>
 
 </body>
 </html>
